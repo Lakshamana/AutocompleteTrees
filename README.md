@@ -5,6 +5,6 @@
 ## Alunos:
 <ul>
   <li>Guilherme Albuquerque (<a href="https://github.com/Lakshamana">@Lakshamana</a>);</li>
-  <li>Rafael Sousa (<a href="https://github.com/RafaSou">@RafaSou</a>);</li>
+  <li>Rafael Sousa (<a href="https://github.com/RafaelSou">@RafaelSou</a>);</li>
  </ul>
   
