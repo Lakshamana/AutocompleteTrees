@@ -1,21 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package autocompletetrees;
 
-/**
- *
- * @author Guilherme
- */
-public class Main {
+import autocompletetrees.gui.Menu;
+import java.util.Scanner;
 
-    /**
-     * @param args the command line arguments
-     */
+public class Main {
     public static void main(String[] args) {
-        // TODO code application logic here
+        Menu m = new Menu();
+        Scanner sc = new Scanner(System.in);
+        int op;
+        System.out.println("Autocomplete Trees =)");
+        //Do case 1 pra baixo, chamar da classe Logic
+        do {
+            op = m.menuEntrada(sc);
+            switch(op) {
+                case 0:
+                    m.exit();
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                default:
+                    break;
+            }
+        } while(op != 0);
     }
-    
 }
