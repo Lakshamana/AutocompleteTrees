@@ -8,4 +8,6 @@ public interface INode<T> {
     T subNode(String s);
     
     LinkedList<T> getChildren();
+    
+    boolean isLeaf();
 }

@@ -30,6 +30,7 @@ public class TrieNode implements INode<TrieNode> {
         return null;
     }
 
+    
     public char getContent() {
         return content;
     }
@@ -38,7 +39,7 @@ public class TrieNode implements INode<TrieNode> {
         this.content = content;
     }
 
-    public boolean isIsEnd() {
+    public boolean getIsEnd() {
         return isEnd;
     }
 
@@ -70,5 +71,10 @@ public class TrieNode implements INode<TrieNode> {
     @Override
     public TrieNode subNode(String s) {
         throw new UnsupportedOperationException("Implementar somente subNode(Char)"); 
+    }
+
+    @Override
+    public boolean isLeaf() {
+        return getChildren().isEmpty();
     }
 }

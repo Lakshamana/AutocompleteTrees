@@ -14,7 +14,7 @@ public class Trie implements ITree{
     @Override
     public void inserir(String word){   
         TrieNode current = root; 
-        for (char ch : word.toCharArray() ){
+        for (char ch : word.toCharArray()){
             TrieNode child = current.subNode(ch);
             if (child != null)
                 current = child;
@@ -32,7 +32,7 @@ public class Trie implements ITree{
     @Override
     public int existe(String word){
         TrieNode current = root;  
-        for (char ch : word.toCharArray() ){
+        for (char ch : word.toCharArray()){
             if (current.subNode(ch) == null)
                 return 0;
             else
