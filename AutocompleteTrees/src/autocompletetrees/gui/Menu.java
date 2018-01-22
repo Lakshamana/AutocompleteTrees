@@ -5,24 +5,25 @@ import java.util.Scanner;
 public class Menu {
     public int menuEntrada(Scanner s){
         System.out.println("\nSelecione uma opção abaixo:");
-        System.out.println("I. Inserir uma palavra\n"
-                + "II. Deletar uma palavra\n"
-                + "III. Buscar uma palavra\n"
-                + "IV. Mostrar palavras no dicionário\n"
+        System.out.println("1. Inserir uma palavra\n"
+                + "2. Deletar uma palavra\n"
+                + "3. Buscar uma palavra\n"
+                + "4. Mostrar palavras no dicionário\n"
                 + "0. Parar execução");
+        System.err.print("-Escolha a Opção:");    
         return s.nextInt();
     }
     
     public void inserirPalavraMenu(){
-        System.out.println("\nInsira uma palavra:");
+        System.err.print("\nInsira uma palavra:");
     }
     
     public void removerPalavraMenu(){
-        System.out.println("\nEscolha uma palavra para remover:");
+        System.err.print("\nEscolha uma palavra para remover:");
     }
     
     public void buscarPalavraMenu(){
-        System.out.println("\nEscolha uma palavra para buscar:");
+        System.err.print("\nEscolha uma palavra para buscar:");
     }
     
     public void exit(){

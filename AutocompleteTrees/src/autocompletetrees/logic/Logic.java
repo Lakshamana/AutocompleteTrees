@@ -1,7 +1,9 @@
 package autocompletetrees.logic;
 
+import autocompletetrees.logic.tree.Trie;
 import autocompletetrees.logic.tree.TrieNode;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Logic {
 
@@ -36,5 +38,36 @@ public class Logic {
                     matchList.add(str);
         }
         return matchList;
+    }
+    
+    public void addPalavra(Trie t){
+        Scanner sc = new Scanner(System.in);
+        String P = sc.next();
+        
+        t.inserir(P);
+        this.list.add(P);
+    }
+    
+    public void rmvPalavra(Trie t){
+        Scanner sc = new Scanner(System.in);
+        String P = sc.next();
+        
+        if(t.existe(P)==0){
+            System.err.println("A palavra "+P+" não está listada!");
+        }else {
+            t.remover(P);
+            this.list.remove(P);
+        }
+    }
+    
+    public void printPalavra(TrieNode t){
+        this.list(this.getList());
+    }
+    
+    public void searchPalavra(){
+        Scanner sc = new Scanner(System.in);
+        String P = sc.next();
+        
+        this.list(this.matchPalavras(P, this.getList()));
     }
 }

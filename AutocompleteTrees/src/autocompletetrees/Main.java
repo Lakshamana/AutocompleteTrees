@@ -3,6 +3,7 @@ package autocompletetrees;
 import autocompletetrees.gui.Menu;
 import autocompletetrees.logic.Logic;
 import autocompletetrees.logic.tree.Trie;
+import autocompletetrees.logic.tree.TrieNode;
 import java.util.Scanner;
 
 public class Main {
@@ -21,12 +22,20 @@ public class Main {
                     m.exit();
                     break;
                 case 1:
+                    m.inserirPalavraMenu();
+                    l.addPalavra(t);
                     break;
                 case 2:
+                    m.removerPalavraMenu();
+                    l.rmvPalavra(t);
                     break;
                 case 3:
+                    m.buscarPalavraMenu();
+                    l.searchPalavra();
                     break;
                 case 4:
+                    TrieNode root = t.getRoot();
+                    l.printPalavra(root);
                     break;
                 default:
                     break;
