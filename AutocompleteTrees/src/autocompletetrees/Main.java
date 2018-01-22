@@ -9,8 +9,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Menu m = new Menu();
-        Logic l = new Logic();
         Trie t = new Trie();
+        Logic l = new Logic();
+        TrieNode root = t.getRoot();
         Scanner sc = new Scanner(System.in);
         int op;
         System.out.println("Autocomplete Trees =)");
@@ -22,22 +23,22 @@ public class Main {
                     m.exit();
                     break;
                 case 1:
-                    m.inserirPalavraMenu();
                     l.addPalavra(t);
                     break;
                 case 2:
-                    m.removerPalavraMenu();
                     l.rmvPalavra(t);
                     break;
                 case 3:
-                    m.buscarPalavraMenu();
-                    l.searchPalavra();
+                    l.searchPalavra(t);
                     break;
                 case 4:
-                    TrieNode root = t.getRoot();
-                    l.printPalavra(root);
+                    l.printPalavras(root);
+                    break;
+                case 5:
+                    l.showRadicais(root);
                     break;
                 default:
+                    m.dispararErro();
                     break;
             }
         } while(op != 0);
@@ -51,9 +52,8 @@ public class Main {
 //        t.inserir("belem");
 //        t.inserir("casa");
 //        t.inserir("deserto");
-//        TrieNode root = t.getRoot();
 //        String s = Character.toString(root.getContent());
-//        l.getTodasAsPalavras(root, s);
+//        l.getTree(root, s);
 //        l.list(l.getList());
 //        l.list(l.matchPalavras("b", l.getList()));
     }

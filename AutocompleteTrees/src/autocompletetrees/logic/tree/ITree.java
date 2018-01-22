@@ -6,6 +6,8 @@
 package autocompletetrees.logic.tree;
 
 public interface ITree {
+    INode getRoot();
+    
     void inserir(String w);
     
     void remover(String w);
