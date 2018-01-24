@@ -31,7 +31,7 @@ public class Logic {
         for(Iterator<String> iterator = chaves.iterator();iterator.hasNext();){
             String chave = iterator.next();
             if(chave!=null){
-                System.out.println("+"+chave);
+                System.out.println("- "+chave);
             }
         }   
     }
@@ -41,7 +41,7 @@ public class Logic {
         for(Iterator<String> iterator = chaves.iterator();iterator.hasNext();){
             String chave = iterator.next();
             if(chave!=null){
-                System.out.println("+"+chave+"("+ls.get(chave)+")");
+                System.out.println("- "+chave+"("+ls.get(chave)+")");
             }
         } 
     }
