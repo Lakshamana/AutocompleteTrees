@@ -87,14 +87,6 @@ public class Logic {
         }
     }
 
-    public void printPalavras() {
-        if (!list.isEmpty()) {
-            System.out.println("\nMostrando todas as palavras:");
-            this.list(this.list);
-        } else 
-            System.err.println("\nNão existem palavras no dicionário!");
-    }
-
     public void searchPalavra() {
         m.buscarPalavraMenu();
         String P = sc.next();
