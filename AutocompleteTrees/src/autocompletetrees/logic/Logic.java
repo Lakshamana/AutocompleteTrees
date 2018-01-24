@@ -10,6 +10,7 @@ public class Logic {
 
     Menu m = new Menu();
     LinkedList<String> list = new LinkedList<>();
+    LinkedList<String> shl = new LinkedList<>();
     Scanner sc = new Scanner(System.in);
     
     public void getTree(TrieNode no, String name) {
@@ -24,9 +25,8 @@ public class Logic {
     }
 
     public void list(LinkedList<String> ls) {
-        for (String s : ls) {
+        for (String s : ls) 
             System.out.println("-" + s);
-        }
         System.out.println("");
     }
 
@@ -45,7 +45,9 @@ public class Logic {
         m.inserirPalavraMenu();
         String P = sc.next();
         t.inserir(P);
-        list.add(P);
+        if(!list.contains(P))
+            list.add(P);
+        shl.add(P);
     }
 
     public void rmvPalavra(Trie t) {
@@ -64,7 +66,13 @@ public class Logic {
     public void printPalavras(TrieNode t) {
         if (!list.isEmpty()) {
             System.out.println("\nMostrando todas as palavras:");
-            this.list(this.getList());
+            for(String s1 : list){
+                int r = 0;
+                for(String s2 : shl)
+                    if(s1.equals(s2))
+                        r++;
+                System.out.printf("-%s (%d)\n", s1, r);
+            }
         } else 
             System.err.println("\nNão existem palavras no dicionário!");
     }
