@@ -14,7 +14,7 @@ public class Main {
         TrieNode root = t.getRoot();
         Scanner sc = new Scanner(System.in);
         int op;
-        System.out.println("Autocomplete Trees =)");
+        System.out.println("Autocomplete Trees =)\nAutores: @Lakshamana & @RafaelSou.");
         //Do case 1 pra baixo, chamar da classe Logic
         do {
             op = m.menuEntrada(sc);
@@ -29,10 +29,10 @@ public class Main {
                     l.rmvPalavra(t);
                     break;
                 case 3:
-                    l.searchPalavra(t);
+                    l.searchPalavra();
                     break;
                 case 4:
-                    l.printPalavras(root);
+                    l.listCount(l.getList());
                     break;
                 case 5:
                     l.showRadicais(root);

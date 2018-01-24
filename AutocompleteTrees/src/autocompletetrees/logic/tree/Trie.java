@@ -1,8 +1,9 @@
 package autocompletetrees.logic.tree;
 
 public class Trie implements ITree{
-    private TrieNode root;
+    private final TrieNode root;
 
+    @Override
     public TrieNode getRoot() {
         return root;
     }

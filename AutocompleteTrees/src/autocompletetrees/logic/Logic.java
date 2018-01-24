@@ -5,7 +5,6 @@ import autocompletetrees.logic.tree.Trie;
 import autocompletetrees.logic.tree.TrieNode;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -37,12 +36,12 @@ public class Logic {
         }   
     }
     
-    public void listCount() {
-        Set<String> chaves = list.keySet();
+    public void listCount(Map<String, Integer> ls) {
+        Set<String> chaves = ls.keySet();
         for(Iterator<String> iterator = chaves.iterator();iterator.hasNext();){
             String chave = iterator.next();
             if(chave!=null){
-                System.out.println("+"+chave+"("+list.get(chave)+")");
+                System.out.println("+"+chave+"("+ls.get(chave)+")");
             }
         } 
     }
@@ -53,7 +52,7 @@ public class Logic {
             s += ".*";
             for (String str : l.keySet()) 
                 if (str.matches(s)) 
-                    matchList.put(str,null);
+                    matchList.put(str, getList().get(str));
         }
         return matchList;
     }
@@ -64,8 +63,8 @@ public class Logic {
         if(this.getList().containsKey(P)==true){
             this.getList().put(P, this.getList().get(P)+1);
         }else{    
-        t.inserir(P);
-        this.getList().put(P,1);
+            t.inserir(P);
+            this.getList().put(P,1);
         }
     }
 
@@ -83,10 +82,9 @@ public class Logic {
             }else if(this.getList().get(P)>1){
                 this.getList().put(P, this.getList().get(P)-1);
             }
-            
         }
     }
-
+    
     public void searchPalavra() {
         m.buscarPalavraMenu();
         String P = sc.next();
@@ -95,8 +93,8 @@ public class Logic {
         else if (list.isEmpty()) 
             System.err.println("\nNão existem palavras no dicionário!");
         else {
-            this.list(this.matchPalavras(P, this.getList()));
-            }
+            this.listCount(this.matchPalavras(P, this.getList()));
+        }
     }
     
     public void showRadicais(TrieNode no){

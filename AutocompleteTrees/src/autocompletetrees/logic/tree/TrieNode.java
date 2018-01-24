@@ -1,10 +1,6 @@
 package autocompletetrees.logic.tree;
 
 import java.util.*;
-/**
- *
- * @author 201604940041
- */
 
 public class TrieNode implements INode<TrieNode> {
     char content; 
@@ -14,11 +10,10 @@ public class TrieNode implements INode<TrieNode> {
     LinkedList<TrieNode> childList; 
     /* Constructor */
     public TrieNode(char c){
-        childList = new LinkedList<>(); // LinkedList<TrieNode>
+        childList = new LinkedList<>(); 
         isEnd = false;
         content = c;
         count = 0;
-        countRepeat = 0;
     }  
 
     @Override
