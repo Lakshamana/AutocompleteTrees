@@ -3,14 +3,17 @@ package autocompletetrees.logic;
 import autocompletetrees.gui.Menu;
 import autocompletetrees.logic.tree.Trie;
 import autocompletetrees.logic.tree.TrieNode;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Logic {
 
     Menu m = new Menu();
-    LinkedList<String> list = new LinkedList<>();
-    LinkedList<String> shl = new LinkedList<>();
+    Map<String, Integer> list = new HashMap<>();
     Scanner sc = new Scanner(System.in);
     
     public void getTree(TrieNode no, String name) {
@@ -20,23 +23,37 @@ public class Logic {
         }
     }
 
-    public LinkedList<String> getList() {
+    public Map<String, Integer> getList() {
         return list;
     }
 
-    public void list(LinkedList<String> ls) {
-        for (String s : ls) 
-            System.out.println("-" + s);
-        System.out.println("");
+    public void list(Map<String, Integer> ls) {
+        Set<String> chaves = ls.keySet();
+        for(Iterator<String> iterator = chaves.iterator();iterator.hasNext();){
+            String chave = iterator.next();
+            if(chave!=null){
+                System.out.println("+"+chave);
+            }
+        }   
+    }
+    
+    public void listCount() {
+        Set<String> chaves = list.keySet();
+        for(Iterator<String> iterator = chaves.iterator();iterator.hasNext();){
+            String chave = iterator.next();
+            if(chave!=null){
+                System.out.println("+"+chave+"("+list.get(chave)+")");
+            }
+        } 
     }
 
-    public LinkedList<String> matchPalavras(String s, LinkedList<String> l) {
-        LinkedList<String> matchList = new LinkedList<>();
+    public Map<String, Integer> matchPalavras(String s, Map<String, Integer> l) {
+        Map<String, Integer> matchList = new HashMap<>();
         if (s.length() >= 3) {
             s += ".*";
-            for (String str : l) 
+            for (String str : l.keySet()) 
                 if (str.matches(s)) 
-                    matchList.add(str);
+                    matchList.put(str,null);
         }
         return matchList;
     }
@@ -44,10 +61,12 @@ public class Logic {
     public void addPalavra(Trie t) {
         m.inserirPalavraMenu();
         String P = sc.next();
+        if(this.getList().containsKey(P)==true){
+            this.getList().put(P, this.getList().get(P)+1);
+        }else{    
         t.inserir(P);
-        if(!list.contains(P))
-            list.add(P);
-        shl.add(P);
+        this.getList().put(P,1);
+        }
     }
 
     public void rmvPalavra(Trie t) {
@@ -58,34 +77,34 @@ public class Logic {
         } else if (list.isEmpty()) {
             System.err.println("\nNão existem palavras no dicionário!");
         } else {
-            t.remover(P);
-            this.list.remove(P);
+            if(this.getList().get(P)==1){
+                t.remover(P);
+                this.getList().remove(P);
+            }else if(this.getList().get(P)>1){
+                this.getList().put(P, this.getList().get(P)-1);
+            }
+            
         }
     }
 
-    public void printPalavras(TrieNode t) {
+    public void printPalavras() {
         if (!list.isEmpty()) {
             System.out.println("\nMostrando todas as palavras:");
-            for(String s1 : list){
-                int r = 0;
-                for(String s2 : shl)
-                    if(s1.equals(s2))
-                        r++;
-                System.out.printf("-%s (%d)\n", s1, r);
-            }
+            this.list(this.list);
         } else 
             System.err.println("\nNão existem palavras no dicionário!");
     }
 
-    public void searchPalavra(Trie t) {
+    public void searchPalavra() {
         m.buscarPalavraMenu();
         String P = sc.next();
-        if (matchPalavras(P, list).isEmpty()) 
+        if (matchPalavras(P, this.getList()).isEmpty()) 
             System.err.printf("\nNão foram encontradas palavras com o radical \"%s\"\n!", P);
         else if (list.isEmpty()) 
             System.err.println("\nNão existem palavras no dicionário!");
-         else 
-            this.list(this.matchPalavras(P, list));
+        else {
+            this.list(this.matchPalavras(P, this.getList()));
+            }
     }
     
     public void showRadicais(TrieNode no){
